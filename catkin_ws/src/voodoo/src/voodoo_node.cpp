@@ -1,36 +1,26 @@
 #include "ros/ros.h"
-#include "std_msgs/String.h"
+#include "sensor_msgs/JointState.h"
+#include "sensor_msgs/Joy.h"
 
-#include <sstream>
+#include <memory>
 
 int main(int argc, char** argv) {
 
     ros::init(argc, argv, "voodoo");
+    ros::NodeHandle n("~");
 
-    ros::NodeHandle n;
+    ROS_INFO("voodoo started.");
 
-    ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+    ros::Publisher publisher =
+        n.advertise<sensor_msgs::JointState>("joint_state", 10);
 
-    ros::Rate loop_rate(10);
+    ros::Subscriber subscriber = n.subscribe<sensor_msgs::Joy>(
+        "joy", 10, [&publisher](const sensor_msgs::Joy::ConstPtr& msg) -> void {
+            sensor_msgs::JointState joint_state;
+            publisher.publish(joint_state);
+        });
 
-    int count = 0;
-    while (ros::ok()) {
-
-        std_msgs::String msg;
-
-        std::stringstream ss;
-        ss << "hello world " << count;
-        msg.data = ss.str();
-
-        ROS_INFO("%s", msg.data.c_str());
-
-        chatter_pub.publish(msg);
-
-        ros::spinOnce();
-
-        loop_rate.sleep();
-        ++count;
-    }
+    ros::spin();
 
     return 0;
 }

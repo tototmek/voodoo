@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(voodoo)
 
-find_package(catkin REQUIRED COMPONENTS roscpp)
+find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs)
 
 catkin_package()
 
