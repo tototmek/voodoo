@@ -4,6 +4,8 @@
         <param name="autorepeat_rate" value="10.0"/>
     </node>
 
-    <node pkg="voodoo" type="voodoo_node" name="voodoo_node"/>
+    <node pkg="voodoo" type="voodoo_node" name="voodoo_node">
+        <remap from="/voodoo_node/joy" to="/joy"/>
+    </node>
 
 </launch>

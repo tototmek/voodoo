@@ -1,5 +1,6 @@
 {
     "C_Cpp.default.includePath": [
-        "/opt/ros/noetic/include/*"
+        "/opt/ros/noetic/include/*",
+        "/home/tototmek/repos/voodoo/catkin_ws/src/voodoo/include/"
     ]
 }
