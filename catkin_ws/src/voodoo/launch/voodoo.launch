@@ -5,6 +5,7 @@
     </node>
 
     <node pkg="voodoo" type="voodoo_node" name="voodoo_node">
+        <rosparam file="$(find voodoo)/config/example.yaml" command="load"/> 
         <remap from="/voodoo_node/joy" to="/joy"/>
     </node>
 
