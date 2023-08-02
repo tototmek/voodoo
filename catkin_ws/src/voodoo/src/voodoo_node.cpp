@@ -13,6 +13,7 @@ int main(int argc, char** argv)
     ros::NodeHandle n("~");
 
     const auto& [joint_names, joint_ranges, joy_ranges] = voodoo::IO::loadParams(n, "");
+
     voodoo::Remapper remapper(joint_names, joint_ranges, joy_ranges);
 
     ros::Publisher publisher = n.advertise<sensor_msgs::JointState>("joint_state", 10);

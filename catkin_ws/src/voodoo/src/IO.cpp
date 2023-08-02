@@ -37,7 +37,7 @@ const remap_param_t loadParams(const ros::NodeHandle& node_handle, const std::st
     std::vector<Range<double>> joint_ranges;
 
     for (int i = 0; i < joint_ranges_raw.size(); ++i) {
-        XmlRpc::XmlRpcValue pair = joint_ranges_raw[0];
+        XmlRpc::XmlRpcValue pair = joint_ranges_raw[i];
         double minimum           = pair[0];
         double maximum           = pair[1];
         joint_ranges.emplace_back(minimum, maximum);
@@ -45,7 +45,7 @@ const remap_param_t loadParams(const ros::NodeHandle& node_handle, const std::st
 
     std::vector<Range<double>> joy_ranges;
     for (int i = 0; i < joy_ranges_raw.size(); ++i) {
-        XmlRpc::XmlRpcValue pair = joy_ranges_raw[0];
+        XmlRpc::XmlRpcValue pair = joy_ranges_raw[i];
         double minimum           = pair[0];
         double maximum           = pair[1];
         joy_ranges.emplace_back(minimum, maximum);
