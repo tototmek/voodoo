@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 
     voodoo::Remapper remapper(joint_names, joint_ranges, joy_ranges);
 
-    ros::Publisher publisher = n.advertise<sensor_msgs::JointState>("joint_state", 10);
+    ros::Publisher publisher = n.advertise<sensor_msgs::JointState>("joint_states", 10);
 
     const auto callback = [&publisher, &remapper](const sensor_msgs::Joy::ConstPtr& msg) -> void {
         sensor_msgs::JointState joint_state = remapper.remap(msg);

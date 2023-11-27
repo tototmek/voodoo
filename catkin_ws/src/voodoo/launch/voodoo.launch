@@ -2,11 +2,11 @@
 
     <node pkg="joy" type="joy_node" name="joy_node">
         <param name="autorepeat_rate" value="10.0"/>
+        <remap from="/joy" to="voodoo_node/joy"/>
     </node>
 
     <node pkg="voodoo" type="voodoo_node" name="voodoo_node">
         <rosparam file="$(find voodoo)/config/example.yaml" command="load"/> 
-        <remap from="/voodoo_node/joy" to="/joy"/>
     </node>
 
 </launch>
