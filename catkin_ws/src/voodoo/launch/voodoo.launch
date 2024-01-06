@@ -1,4 +1,5 @@
 <launch>
+    <arg name="voodoo_config" />
 
     <node pkg="joy" type="joy_node" name="joy_node">
         <param name="dev" value="/dev/input/js0"/>
@@ -10,7 +11,7 @@
     </node>
 
     <node pkg="voodoo" type="voodoo_node" name="voodoo_node">
-        <rosparam file="$(find voodoo)/config/example.yaml" command="load"/> 
+        <rosparam file="$(arg voodoo_config)" command="load"/> 
     </node>
 
 </launch>
